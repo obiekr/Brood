@@ -1,0 +1,36 @@
+#body {
+  background-color: #e6d0ca;
+  font-family: "roboto";
+}
+
+#box1 {
+  color: #000000;
+}
+
+#mainBox {
+  border-radius: 25px;
+  background-color: #d4d6ff;
+}
+
+#button {
+  border-radius: 20px;
+  margin-left: 620px;
+}
+
+#switch {
+  margin-left: 430px;
+  color: #573988;
+}
+
+#editor1 {
+  border-radius: 5px;
+}
+
+@media all and (max-width: 820px) {
+  #button {
+    margin: auto;
+  }
+  #switch {
+    margin: auto;
+  }
+}
