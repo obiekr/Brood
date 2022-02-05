@@ -18,12 +18,14 @@ function parseJwt(token) {
 }
 
 
+
 function App() {
+  const backend = "https://broodmood.herokuapp.com"
   const [login, setLogin] = useState(false)
   const [userData, setUserData] = useState({})
   const [loading, setLoading] = useState(true)
   const getUser = async (email) => {
-    await fetch("http://localhost:1337/api/user", {
+    await fetch(backend+"/api/user", {
             method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -58,11 +60,11 @@ function App() {
       <BrowserRouter>
       <Navbar userData={userData} login={login} setLogin={setLogin}/>
       <Routes>
-      <Route path="/" exact element={<Home />}></Route>
-      <Route path="/login" exact element={<Login setLogin={setLogin}/>}></Route>
-      <Route path="/register" exact element={<Register setLogin={setLogin}/>}></Route>
-      <Route path="/main" exact element={<Main login={login} id={userData._id}/>}></Route>
-      <Route path="/create" exact element={<Create id={userData._id}/>}></Route>
+      <Route path="/" exact element={<Home backend={backend}/>}></Route>
+      <Route path="/login" exact element={<Login setLogin={setLogin} backend={backend}/>}></Route>
+      <Route path="/register" exact element={<Register setLogin={setLogin} backend={backend}/>}></Route>
+      <Route path="/main" exact element={<Main login={login} id={userData._id} backend={backend}/>}></Route>
+      <Route path="/create" exact element={<Create id={userData._id} backend={backend}/>}></Route>
       </Routes>
       <div className='mb-5'></div>
       </BrowserRouter>

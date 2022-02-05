@@ -4,7 +4,7 @@ import Comment from './Comment';
 import parse from 'html-react-parser';
 import DOMPurify from 'dompurify'
 
-export default function Threads({post, opId, login, userId}){
+export default function Threads({post, opId, login, userId, backend}){
     const [opName, setOpName] = useState("")
     const [toggleComment, setToggleComment] = useState(false)
     const [comments, setComments] = useState([])
@@ -15,7 +15,7 @@ export default function Threads({post, opId, login, userId}){
     var localDate = new Date(post.date)
 
     useEffect(()=>{
-        fetch("http://localhost:1337/api/op", {
+        fetch(backend+"/api/op", {
             method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export default function Threads({post, opId, login, userId}){
             .then(res => res.json())
             .then(data => setOpName(data.name))
 
-        fetch("http://localhost:1337/api/getComment/", {
+        fetch(backend+"/api/getComment", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export default function Threads({post, opId, login, userId}){
 
     async function createComment(e){
         e.preventDefault()
-        const res = await fetch('http://localhost:1337/api/createComment', {
+        const res = await fetch(backend+'/api/createComment', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

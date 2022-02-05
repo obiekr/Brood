@@ -9,8 +9,7 @@ export default function Login(props){
 
     async function loginUser(e){
         e.preventDefault()
-        console.log("asdasd")
-        const res = await fetch('http://localhost:1337/api/login', {
+        const res = await fetch(props.backend+"/api/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

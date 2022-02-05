@@ -14,7 +14,7 @@ export default function Create(props){
 
     async function createPost(e){
         e.preventDefault()
-        const res = await fetch('http://localhost:1337/api/create', {
+        const res = await fetch(props.backend+"/api/create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

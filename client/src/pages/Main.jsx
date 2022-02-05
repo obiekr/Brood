@@ -7,7 +7,7 @@ export default function Main(props){
     const [posts, setPosts] = useState([])
 
     useEffect(()=>{
-        fetch("http://localhost:1337/api/main")
+        fetch(props.backend+"/api/main")
             .then(res => res.json())
             .then(data => setPosts(data))
     }, [])
@@ -21,6 +21,7 @@ export default function Main(props){
                 opId={post.op} 
                 login={props.login}
                 userId={props.id}
+                backend={props.backend}
                 />
             ))
         }

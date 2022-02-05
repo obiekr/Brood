@@ -7,11 +7,11 @@ const toId = mongoose.Types.ObjectId
 const path = require("path")
 
 const {User, Post, Comment} = require("./schemas")
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 1337
 
 app.use(cors())
-app.use(express.json())
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://first:first@cluster0.qa3ym.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+app.use(express.json()) 
+mongoose.connect('mongodb+srv://first:first@cluster0.qa3ym.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
 
 // register user
 app.post('/api/register', async (req, res)=>{
@@ -94,7 +94,7 @@ app.post('/api/createComment', async (req, res)=>{
 })
 
 // get all comment
-app.post('/api/getComment/', async (req, res)=>{
+app.post('/api/getComment', async (req, res)=>{
     const comment = await Comment.find({
         post: toId(req.body.id)
     }).sort({

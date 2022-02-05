@@ -8,7 +8,7 @@ export default function Register(props){
     const [age, setAge] = useState()
 
     async function loginUser(e){
-        const res = await fetch('http://localhost:1337/api/login', {
+        const res = await fetch(props.backend+"/api/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export default function Register(props){
 
     async function registerUser(e){
         e.preventDefault()
-        const res = await fetch('http://localhost:1337/api/register', {
+        const res = await fetch(props.backend+"/api/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
