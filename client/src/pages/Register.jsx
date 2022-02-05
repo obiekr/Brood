@@ -7,7 +7,7 @@ export default function Register(props){
     const [password, setPasword] = useState('')
     const [age, setAge] = useState()
 
-    async function loginUser(e){
+    async function loginUser(){
         const res = await fetch(props.backend+"/api/login", {
             method: "POST",
             headers: {
@@ -27,6 +27,7 @@ export default function Register(props){
 
     async function registerUser(e){
         e.preventDefault()
+        console.log("a")
         const res = await fetch(props.backend+"/api/register", {
             method: "POST",
             headers: {
@@ -37,6 +38,7 @@ export default function Register(props){
             }),
         })
         const data = await res.json()
+        console.log(data)
         if (data.status === "ok"){
             loginUser()
         }
@@ -50,7 +52,7 @@ export default function Register(props){
                     <img src={logo} alt="logo" className="w-25 d-inline-block" />
                 </div>
                 <div className="d-flex justify-content-center">
-                    <form className="w-25" onSubmit={registerUser}>
+                    <form className="w-25" onSubmit={(e)=>registerUser(e)}>
                         <div className="form-group">
                             <input type="text" className="form-control text-center rounded-pill" aria-describedby="emailHelp" placeholder="Name" value={name}  onChange={(e)=>setName(e.target.value)}/>
                         </div>
@@ -63,19 +65,19 @@ export default function Register(props){
                         <div className="form-group mt-3">
                             <input type="password" className="form-control text-center rounded-pill" id="exampleInputPassword1" placeholder="Password" value={password} onChange={(e)=>setPasword(e.target.value)}/>
                         </div>
-                        
 
                         <div className="text-center mt-3">
                             <button type="submit" className="btn btn-primary rounded-pill w-100">Register</button>
                         </div>
-                        <div className="text-center mt-3">
-                            <button className="btn btn-dark rounded-pill w-100"><i className="fa fa-google"></i>      Continue with Google</button>
-                        </div>
+                        
 
                     </form>
                     
                 </div>
                 <div className="container w-25 mt-4">
+                    <div className="text-center mt-3">
+                        <button className="btn btn-dark rounded-pill w-100"><i className="fa fa-google"></i>      Continue with Google</button>
+                    </div>
                     <div className="d-flex justify-content-center text-center">
                         <a href="/login" className="btn btn-warning px-4 rounded-pill">Log In</a>
                     </div>

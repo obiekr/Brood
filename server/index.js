@@ -27,8 +27,6 @@ app.post('/api/register', async (req, res)=>{
     }catch(err){
         return res.json({status: "Error", error: "Your email has been used"})
     }
-    return res.json({status:'ok'})
-    console.log(req.body)
 })
 
 // login user
@@ -65,7 +63,6 @@ app.post('/api/create', async (req, res)=>{
     }catch(err){
         return res.json({status: "Error", error: err})
     }
-    return res.json({status:'ok'})
 })
 
 // generate all post
@@ -90,7 +87,6 @@ app.post('/api/createComment', async (req, res)=>{
     }catch(err){
         return res.json({status: "Error", error: err})
     }
-    return res.json({status:'ok'})
 })
 
 // get all comment
