@@ -23,11 +23,11 @@ app.post('/api/register', async (req, res)=>{
             password: req.body.password,
             reputation: 0,
         })
-        res.json({status: "ok"})
+        return res.json({status: "ok"})
     }catch(err){
-        res.json({status: "Error", error: "Your email has been used"})
+        return res.json({status: "Error", error: "Your email has been used"})
     }
-    res.json({status:'ok'})
+    return res.json({status:'ok'})
     console.log(req.body)
 })
 
@@ -61,11 +61,11 @@ app.post('/api/create', async (req, res)=>{
             op: toId(req.body.op),
             date: new Date(),
         })
-        res.json({status: "ok"})
+        return res.json({status: "ok"})
     }catch(err){
-        res.json({status: "Error", error: err})
+        return res.json({status: "Error", error: err})
     }
-    res.json({status:'ok'})
+    return res.json({status:'ok'})
 })
 
 // generate all post
@@ -73,7 +73,7 @@ app.get('/api/main', async (req, res)=>{
     const posts = await Post.find({}).sort({
         date: -1
     })
-    res.json(posts)
+    return res.json(posts)
 })
 
 
@@ -86,11 +86,11 @@ app.post('/api/createComment', async (req, res)=>{
             op: toId(req.body.op),
             date: new Date(),
         })
-        res.json({status: "ok"})
+        return res.json({status: "ok"})
     }catch(err){
-        res.json({status: "Error", error: err})
+        return res.json({status: "Error", error: err})
     }
-    res.json({status:'ok'})
+    return res.json({status:'ok'})
 })
 
 // get all comment
@@ -100,7 +100,7 @@ app.post('/api/getComment', async (req, res)=>{
     }).sort({
         date: -1
     })
-    res.json(comment)
+    return res.json(comment)
 })
 
 // find user name and id using email
