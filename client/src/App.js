@@ -20,7 +20,7 @@ function parseJwt(token) {
 
 
 function App() {
-  const backend = "http://localhost:1337"
+  const backend = "https://broodmood-api.onrender.com"
   const [login, setLogin] = useState(false)
   const [userData, setUserData] = useState({})
   const [loading, setLoading] = useState(true)
