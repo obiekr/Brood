@@ -13,6 +13,20 @@ app.use(cors())
 app.use(express.json()) 
 mongoose.connect('mongodb+srv://first:first@cluster0.qa3ym.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
 
+const AdminJS = require('adminjs')
+const AdminJSExpress = require('@adminjs/express')
+const AdminJSMongoose = require('@adminjs/mongoose')
+AdminJS.registerAdapter(AdminJSMongoose)
+
+const adminJs = new AdminJS({
+    // databases: [mongoDB],
+    resources: [User, Post, Comment],
+    rootPath: '/admin',
+  })
+
+app.use(adminJs.options.rootPath, AdminJSExpress.buildRouter(adminJs))
+
+
 // register user
 app.post('/api/register', async (req, res)=>{
     try{

@@ -4,3 +4,38 @@ client/node_modules
 server/node_modules
 Brood.zip
 Hackathon.mkv
+client-next/.gitignore
+
+# dependencies
+client-next/node_modules
+client-next/.pnp
+client-next/.pnp.js
+
+# testing
+client-next/coverage
+
+# next.js
+client-next/.next/
+client-next/out/
+
+# production
+client-next/build
+
+# misc
+client-next/.DS_Store
+*.pem
+
+# debug
+client-next/npm-debug.log*
+client-next/yarn-debug.log*
+client-next/yarn-error.log*
+client-next/.pnpm-debug.log*
+
+# local env files
+client-next/.env.local
+client-next/.env.development.local
+client-next/.env.test.local
+client-next/.env.production.local
+
+# vercel
+client-next/.vercel

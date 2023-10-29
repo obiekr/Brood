@@ -20,7 +20,7 @@ function parseJwt(token) {
 
 
 function App() {
-  const backend = "https://broodmood.herokuapp.com"
+  const backend = "http://localhost:1337"
   const [login, setLogin] = useState(false)
   const [userData, setUserData] = useState({})
   const [loading, setLoading] = useState(true)
@@ -41,7 +41,7 @@ function App() {
             setLoading(false)
         }
 
-      })
+      })//print()
   }
 
   useEffect(() => {
